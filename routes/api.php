@@ -18,6 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+//admin 
 Route::group([
   'prefix' => 'auth'
 ], function () {
@@ -28,6 +30,21 @@ Route::group([
   Route::post('me', 'AuthController@me');
 });
 
+// Route::group([
+//   'prefix' => 'admin'
+
+// ],
+// function(){
+//   Route::get('news', 'AdminController@listNews');
+//   Route::get('news/{id}', 'AdminController@getNewsByID');
+//   Route::get('candidates', 'AdminController@listCandidates');
+//   Route::get('candidates/{id}', 'AdminController@getNewsByID');
+//   Route::get('parties/{id}', 'AdminController@gerPartByID');
+//   Route::get('images/{galleryID}', 'AdminController@getImages');
+//   Route::get('parties', 'AdminController@listParties');
+// });
+
+//admin getters
 
 // //PUBLIC GETTERS
 // Route::get('candidates', 'Candidate\CandidateController@getCandidates');
