@@ -12,7 +12,7 @@ class News extends Model
 
    protected $table = 'news';
 
-   protected $fillable = [
+   protected $fillable  = [
       'id',
       'content',
       'slug',
@@ -24,12 +24,4 @@ class News extends Model
       'location_id',
    ];
 
-   public function sluggable()
-    {
-        return [
-            'slug' => [
-                'source' => 'title'
-            ]
-        ];
-    }
 }
