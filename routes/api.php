@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\CandidateController;
+use App\models\Candidate;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,8 +43,23 @@ Route::group([
     Route::get('/article/{slug}', [NewsController::class, 'getNewsBySlug']);
     Route::get('/article/{id}', [NewsController::class, 'getNewsByID']);
     //
-    Route::post('/', [NewsController::class, 'postNews']);
-    Route::put('/', [NewsController::class, 'putNews']);
-    Route::delete('/', [NewsController::class, 'deleteNews']);
+    Route::post('/{article}', [NewsController::class, 'postNews']);
+    Route::put('/{article}', [NewsController::class, 'putNews']);
+    Route::delete('/{article}', [NewsController::class, 'deleteNews']);
 
+});
+
+Route::group([
+  'prefix'=> 'candidates',
+], function($router){
+    Route::get('/list/{page}', [CandidateController::class, 'listCandidates']);
+    Route::get('/top/{page}', [CandidateController::class, 'getCandidatesTop']);
+    Route::get('/{slug}', [CandidateController::class, 'getCandidateBySlug']);
+    Route::get('/{id}', [CandidateController::class, 'getCandidateByID']);
+    //
+    Route::post('/{c}', [CandidateController::class, 'postCandidate']);
+    Route::put('/{c}', [CandidateController::class, 'putCandidate']);
+    Route::delete('/{c}', [CandidateController::class, 'deleteCandidate']);
+    //
+    Route::post('/vote/{v}', [CandidateController::class, 'voteCandidate']);
 });
