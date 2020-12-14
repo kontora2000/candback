@@ -46,6 +46,4 @@ class CandidateController extends Controller
      Candidate::find($req->input('candidate_id'))->increment('votes');
      return response()->json($vote, 201);
   }
-
-
 }

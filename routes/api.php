@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\PartyController;
 use App\models\Candidate;
+use App\Models\Party;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,4 +64,20 @@ Route::group([
     Route::delete('/{c}', [CandidateController::class, 'deleteCandidate']);
     //
     Route::post('/vote/{v}', [CandidateController::class, 'voteCandidate']);
+});
+
+
+Route::group([
+  'prefix'=> 'parties',
+], function($router){
+    Route::get('/list/{page}', [PartyController::class, 'listParties']);
+    Route::get('/top/{page}', [PartyController::class, 'getPartiesTop']);
+    Route::get('/{slug}', [PartyController::class, 'getPartyBySlug']);
+    Route::get('/{id}', [PartyController::class, 'getPartyByID']);
+    //
+    Route::post('/{p}', [PartyController::class, 'postParty']);
+    Route::put('/{p}', [PartyController::class, 'putParty']);
+    Route::delete('/{p}', [PartyController::class, 'deleteParty']);
+    //
+    Route::post('/vote/{v}', [PartyController::class, 'votePArty']);
 });
