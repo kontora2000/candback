@@ -48,7 +48,8 @@ Route::group([
     Route::post('/{article}', [NewsController::class, 'postNews']);
     Route::put('/{article}', [NewsController::class, 'putNews']);
     Route::delete('/{article}', [NewsController::class, 'deleteNews']);
-
+    //
+    Route::get('/filter/{tags}', [[NewsController::class, 'listNewsFilter']);
 });
 
 Route::group([
