@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,24 +32,17 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);    
 });
 
-// Route::group([
-//   'prefix' => 'admin'
 
-// ],
-// function(){
-//   Route::get('news', 'AdminController@listNews');
-//   Route::get('news/{id}', 'AdminController@getNewsByID');
-//   Route::get('candidates', 'AdminController@listCandidates');
-//   Route::get('candidates/{id}', 'AdminController@getNewsByID');
-//   Route::get('parties/{id}', 'AdminController@gerPartByID');
-//   Route::get('images/{galleryID}', 'AdminController@getImages');
-//   Route::get('parties', 'AdminController@listParties');
-// });
+Route::group([
+  'prefix'=> 'news',
+], function($router){
+    Route::get('/list', [NewsController::class, 'listNews']);
+    Route::get('/list/{page}', [NewsController::class, 'getNewsPage']);
+    Route::get('/article/{slug}', [NewsController::class, 'getNewsBySlug']);
+    Route::get('/article/{id}', [NewsController::class, 'getNewsByID']);
+    //
+    Route::post('/', [NewsController::class, 'postNews']);
+    Route::put('/', [NewsController::class, 'putNews']);
+    Route::delete('/', [NewsController::class, 'deleteNews']);
 
-//admin getters
-
-// //PUBLIC GETTERS
-// Route::get('candidates', 'Candidate\CandidateController@getCandidates');
-// Route::get('candidate/{slug}', 'Candidate\CandidateController@getCandidateBySlug');
-// Route::get('candidate/{id}', 'Candidate\CandidateController@getCandidateByID');
-// Route::get('news/{slug}', 'Candidate\NewsController@getNewsBySlug');
+});

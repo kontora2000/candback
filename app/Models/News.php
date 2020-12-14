@@ -18,6 +18,6 @@ class News extends Model
       'subcontent',
       'excerpt',
       'gallery_id',
-      'location_id'
+      'location_id',
    ];
 }

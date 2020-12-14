@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Сontrollers;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ class NewsController extends Controller
     return response()->json(News::get(), 200);
   } 
 
-  public function getNewsPage() {
+  public function getNewsPage($page) {
     return response()->json(News::paginate(), 200);
   }
 
@@ -34,5 +34,10 @@ class NewsController extends Controller
   public function putNews(Request $req, News $article) {
     $article->update($req->all());
     return response()->json($article, 200);
+  }
+
+  public function deleteNews(Request $req, News $article) {
+    $article->delete($req->all());
+    return response()->json('', 200);
   }
 }
