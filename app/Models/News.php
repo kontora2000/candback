@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class News extends Model
 {
+  use Sluggable;
+
    protected $table = 'news';
 
    protected $fillable = [
@@ -20,4 +23,13 @@ class News extends Model
       'gallery_id',
       'location_id',
    ];
+
+   public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 }

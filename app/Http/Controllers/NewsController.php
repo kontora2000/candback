@@ -9,7 +9,7 @@ use App\models\News;
 
 class NewsController extends Controller
 {
-  public function getNews() {
+  public function listNews() {
     return response()->json(News::get(), 200);
   } 
 
