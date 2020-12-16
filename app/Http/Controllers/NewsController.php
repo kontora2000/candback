@@ -5,24 +5,24 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\models\News;
+use App\models\Post;
 
-class NewsController extends Controller
+class PostController extends Controller
 {
-  public function listNews() {
-    return response()->json(News::get(), 200);
+  public function listPost() {
+    return response()->json(Post::get(), 200);
   } 
 
-  public function getNewsPage($page) {
-    return response()->json(News::paginate(), 200);
+  public function getPostPage($page) {
+    return response()->json(Post::paginate(), 200);
   }
 
-  public function getNewsByID($id) {
-    return response()->json(News::find($id), 200);
+  public function getPostByID($id) {
+    return response()->json(Post::find($id), 200);
   }
 
-  public function postNews(Request $req) {
-    $article = News::create($req->all());
+  public function postPost(Request $req) {
+    $article = Post::create($req->all());
     if ($article) {
       return response()->json($article, 201);
     }
@@ -31,12 +31,12 @@ class NewsController extends Controller
     }
   }
   
-  public function putNews(Request $req, News $article) {
+  public function putPost(Request $req, Post $article) {
     $article->update($req->all());
     return response()->json($article, 200);
   }
 
-  public function deleteNews(Request $req, News $article) {
+  public function deletePost(Request $req, Post $article) {
     $article->delete($req->all());
     return response()->json('', 200);
   }

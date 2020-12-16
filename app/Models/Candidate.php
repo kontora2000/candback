@@ -11,11 +11,12 @@ class Candidate extends Model
        'id',
        'name',
        'status',
-       'part_id',
+       'partyID',
        'votes',
-       'avatar_id',	
-       'gallery_id',
-       'description'
+       'avatarID',	
+       'galleryID',
+       'description',
+       'tagID'
    ];
 
 }

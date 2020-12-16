@@ -6,22 +6,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class News extends Model
-{
-  use Sluggable;
 
-   protected $table = 'news';
+
+class Post extends Model
+{
+
+   protected $table = 'Post';
 
    protected $fillable  = [
-      'id',
       'content',
       'slug',
       'title',
       'subtitle',
       'subcontent',
       'excerpt',
-      'gallery_id',
-      'location_id',
+      'galleryID',
+      'locationID',
    ];
 
+   
 }

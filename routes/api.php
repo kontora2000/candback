@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\PartyController;
 use App\models\Candidate;
@@ -38,18 +38,18 @@ Route::group([
 
 
 Route::group([
-  'prefix'=> 'news',
+  'prefix'=> 'Post',
 ], function($router){
-    Route::get('/list', [NewsController::class, 'listNews']);
-    Route::get('/list/{page}', [NewsController::class, 'getNewsPage']);
-    Route::get('/article/{slug}', [NewsController::class, 'getNewsBySlug']);
-    Route::get('/article/{id}', [NewsController::class, 'getNewsByID']);
+    Route::get('/list', [PostController::class, 'listPost']);
+    Route::get('/list/{page}', [PostController::class, 'getPostPage']);
+    Route::get('/article/{slug}', [PostController::class, 'getPostBySlug']);
+    Route::get('/article/{id}', [PostController::class, 'getPostByID']);
     //
-    Route::post('/{article}', [NewsController::class, 'postNews']);
-    Route::put('/{article}', [NewsController::class, 'putNews']);
-    Route::delete('/{article}', [NewsController::class, 'deleteNews']);
+    Route::post('/{article}', [PostController::class, 'postPost']);
+    Route::put('/{article}', [PostController::class, 'putPost']);
+    Route::delete('/{article}', [PostController::class, 'deletePost']);
     //
-    Route::get('/filter/{tags}', [[NewsController::class, 'listNewsFilter']);
+    Route::get('/filter/{tags}', [PostController::class, 'listPostFilter']);
 });
 
 Route::group([
@@ -80,5 +80,5 @@ Route::group([
     Route::put('/{p}', [PartyController::class, 'putParty']);
     Route::delete('/{p}', [PartyController::class, 'deleteParty']);
     //
-    Route::post('/vote/{v}', [PartyController::class, 'votePArty']);
+    Route::post('/vote/{v}', [PartyController::class, 'voteParty']);
 });
